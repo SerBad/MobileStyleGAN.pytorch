@@ -14,8 +14,8 @@ torch.cuda.max_memory_allocated()
 
 def build_logger(cfg):
     # return NeptuneLogger(project="MobileStyleGAN.pytorch")
-    run = neptune.init(project='zhoutjcc/MobileStyleGAN-pytorch',
-                       api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiJmNTUzNTlhMy0zZjgzLTQyMzktOGFlNS05MDE0ZDcxNmUyOTcifQ==")
+    run = NeptuneLogger(project='zhoutjcc/MobileStyleGAN-pytorch',
+                        api_key="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiJmNTUzNTlhMy0zZjgzLTQyMzktOGFlNS05MDE0ZDcxNmUyOTcifQ==")
     return run
     # return getattr(pl_loggers, cfg.type)(
     #     **cfg.params
