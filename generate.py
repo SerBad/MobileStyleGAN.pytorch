@@ -34,7 +34,7 @@ if __name__ == "__main__":
     parser.add_argument("--cfg", type=str, default="configs/mobile_stylegan_ffhq.json", help="path to config file")
     parser.add_argument("--ckpt", type=str, default="mobilestylegan_ffhq.ckpt", help="path to checkpoint")
     parser.add_argument("--truncated", action='store_true', help="use truncation mode")
-    parser.add_argument("--output-path", type=str, default="./", help="path to store images")
+    parser.add_argument("--output-path", type=str, default="./output", help="path to store images")
     parser.add_argument("--batch-size", type=int, default=10, help="batch size")
     parser.add_argument("--n-batches", type=int, default=5000, help="number of batches")
     parser.add_argument("--generator", type=str, default="student", help="generator mode: [student|teacher]")
