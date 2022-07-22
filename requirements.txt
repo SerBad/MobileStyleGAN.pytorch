@@ -1,5 +1,6 @@
 wheel
 torch
+torchvision
 pytorch-lightning
 gdown
 addict
@@ -11,3 +12,4 @@ neptune-client
 kornia
 pytorch_fid
 coremltools
+ninja
