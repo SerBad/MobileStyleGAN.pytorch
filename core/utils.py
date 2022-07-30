@@ -8,6 +8,7 @@ def apply_trace_model_mode(mode=False):
     def _apply_trace_model_mode(m):
         if hasattr(m, 'trace_model'):
             m.trace_model = mode
+
     return _apply_trace_model_mode
 
 
@@ -25,7 +26,7 @@ def tensor_to_img(t, normalize=True, range=(-1, 1), to_numpy=True, rgb2bgr=True)
 
 def download_ckpt(url, name, md5):
     print(f"load pretrained model: {name}...")
-    ckpt_path = f"/tmp/{name}"
+    ckpt_path = f"./tmp/{name}"
     gdown.cached_download(url, ckpt_path, md5=md5)
     ckpt = torch.load(ckpt_path, map_location="cpu")
     return ckpt
@@ -55,10 +56,11 @@ def load_weights(target, source_state):
     from collections import OrderedDict
     new_dict = OrderedDict()
     for k, v in target.state_dict().items():
+        print("load_weights k", k, v.shape)
         if k in source_state and v.size() == source_state[k].size():
             new_dict[k] = source_state[k]
         elif k in source_state and v.size() != source_state[k].size():
-            print(f"src: {source_state[k].size()}, tgt: {v.size()}")
+            print(f"src: {source_state[k].size()}, tgt: {v.size()} ,k {k}")
             new_dict[k] = v
         else:
             print(f"key {k} not loaded...")

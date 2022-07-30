@@ -29,15 +29,15 @@ def main(args):
         ckpt = model_zoo(args.ckpt)
         load_weights(distiller, ckpt["state_dict"])
     logger = build_logger(cfg.logger)
-    checkpoint_callback = pl.callbacks.ModelCheckpoint(
-        dirpath=os.getcwd() if args.checkpoint_dir is None else args.checkpoint_dir,
-        save_top_k=True,
-        save_last=True,
-        verbose=True,
-        monitor=cfg.trainer.monitor,
-        mode=cfg.trainer.monitor_mode,
-
-    )
+    # checkpoint_callback = pl.callbacks.ModelCheckpoint(
+    #     dirpath=os.getcwd() if args.checkpoint_dir is None else args.checkpoint_dir,
+    #     save_top_k=True,
+    #     save_last=True,
+    #     verbose=True,
+    #     monitor=cfg.trainer.monitor,
+    #     mode=cfg.trainer.monitor_mode,
+    #
+    # )
     trainer = pl.Trainer(
         gpus=args.gpus,
         max_epochs=cfg.trainer.max_epochs,
@@ -61,7 +61,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     # pipeline configure
-    parser.add_argument("--gpus", type=int, default=0, help="number of available GPUs")
+    parser.add_argument("--gpus", type=int, default=1, help="number of available GPUs")
     parser.add_argument('--distributed-backend', type=str, default="ddp", choices=('dp', 'ddp', 'ddp2'),
                         help='supports three options dp, ddp, ddp2')
     parser.add_argument("--checkpoint_dir", type=str, default="./checkpoint", help="path to checkpoint_dir")

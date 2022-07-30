@@ -11,6 +11,7 @@ class MappingNetwork(nn.Module):
             lr_mlp=0.01
     ):
         super().__init__()
+        print("MappingNetwork style_dim ", style_dim, "n_layers", n_layers, "lr_mlp", lr_mlp)
         self.style_dim = style_dim
         layers = [PixelNorm()]
         for i in range(n_layers):
@@ -20,4 +21,5 @@ class MappingNetwork(nn.Module):
         self.layers = nn.Sequential(*layers)
 
     def forward(self, x):
+        print("\n", "MappingNetwork forward x.shape ", x.shape)
         return self.layers(x)
